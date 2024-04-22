@@ -47,7 +47,7 @@ to quickly create a Cobra application.`,
 				println("topic is nil")
 				return
 			}
-			err := kafka.Publish(context.Background(), kafkaTopics[0], "key", "msggggg", opts...)
+			err := kafka.Publish(context.Background(), kafkaTopics[0], kafkaKey, kafkaValue, opts...)
 			if err != nil {
 				println(err.Error())
 			}
