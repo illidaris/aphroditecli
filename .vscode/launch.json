@@ -17,7 +17,7 @@
         "-A192.168.97.71:10392",
         "-Ukafka",
         "-PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx",
-        "-Ttopic111",
+        "-Ttopic222",
         "-Mproducer",
         "-Kabcd",
         "-Vmessageaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -36,10 +36,8 @@
         "-A192.168.97.71:10392",
         "-Ukafka",
         "-PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx",
-        "-Ttopic111",
-        "-Mconsumer",
-        "-Kabcd",
-        "-Vmessageaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        "-Ttopic222",
+        "-Mconsumer"
       ]
     }
   ]

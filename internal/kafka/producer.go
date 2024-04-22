@@ -12,7 +12,7 @@ func Publish(ctx context.Context, topic string, key string, message string, opts
 	if err != nil {
 		return err
 	}
-	err = m.Publish(ctx, topic, "msg", []byte("xxxx"))
+	err = m.Publish(ctx, topic, key, []byte(message))
 	if err != nil {
 		return err
 	}
