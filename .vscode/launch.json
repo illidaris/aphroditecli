@@ -24,6 +24,25 @@
       ]
     },
     {
+      "name": "wm_producer",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "watermill",
+        "-A192.168.97.71:10192",
+        "-A192.168.97.71:10292",
+        "-A192.168.97.71:10392",
+        "-Ukafka",
+        "-PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx",
+        "-Ttestdelaytopic",
+        "-Mproducer",
+        "-Kabcd",
+        "-Vmessageaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
       "name": "kfk_consumer",
       "type": "go",
       "request": "launch",
@@ -37,6 +56,24 @@
         "-Ukafka",
         "-PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx",
         "-Ttopic222",
+        "-Mconsumer"
+      ]
+    },
+    {
+      "name": "wm_consumer",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "watermill",
+        "-A192.168.97.71:10192",
+        "-A192.168.97.71:10292",
+        "-A192.168.97.71:10392",
+        "-Ukafka",
+        "-PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx",
+        "-Ttestdelaytopic",
+        "-D0",
         "-Mconsumer"
       ]
     }

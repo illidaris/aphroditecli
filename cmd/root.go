@@ -1,16 +1,17 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
+	"aphroditecli/pkg/log"
 	"os"
 
+	"github.com/illidaris/logger"
 	"github.com/spf13/cobra"
 )
 
-
+var delay int64
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -45,7 +46,8 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
+	logger.OnlyConsole()
+	log.NewLogger()
+	rootCmd.PersistentFlags().Int64VarP(&delay, "delay", "D", 0, "exec delay")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-

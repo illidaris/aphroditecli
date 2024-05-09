@@ -13,16 +13,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	kafkaAddrs  []string
-	kafkaUser   string
-	kafkaPwd    string
-	kafkaTopics []string
-	kafkaMode   string
-	kafkaKey    string
-	kafkaValue  string
-)
-
 // kafkaCmd represents the kafka command
 var kafkaCmd = &cobra.Command{
 	Use:   "kafka",
