@@ -5,6 +5,35 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "mongo",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "mongo",
+        "--mongoconn",
+        "mongodb://mongouser:nygB4hCpXLGuBLAEipXp@192.168.97.71:27018/dev_qiuqiu_hercules?authSource=admin&maxPoolSize=100&minPoolSize=20&maxConnecting=4&timeoutMS=60000&maxIdleTimeMS=1000",
+        "--mongodb",
+        "dev_qiuqiu_hercules",
+        "--concurrence",
+        "100000"
+      ]
+    },
+     {
+      "name": "json",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "json",
+        "--pretty",
+        "xxxx!!!!",
+        "{\"X\":123}"
+      ]
+    },
+    {
       "name": "kfk_producer",
       "type": "go",
       "request": "launch",

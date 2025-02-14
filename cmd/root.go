@@ -12,6 +12,7 @@ import (
 )
 
 var delay int64
+var pretty bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -48,6 +49,7 @@ func init() {
 	// when this action is called directly.
 	logger.OnlyConsole()
 	log.NewLogger()
+	rootCmd.PersistentFlags().BoolVarP(&pretty, "pretty", "P", false, "pretty log")
 	rootCmd.PersistentFlags().Int64VarP(&delay, "delay", "D", 0, "exec delay")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
