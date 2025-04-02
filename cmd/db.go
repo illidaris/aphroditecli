@@ -36,7 +36,7 @@ to quickly create a Cobra application.`,
 		if err != nil {
 			println(err.Error())
 		}
-		exptr.Export(out, data, true)
+		exptr.Export(out, data, pretty)
 	},
 }
 
