@@ -4,10 +4,11 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"aphroditecli/internal/watermill"
 	"context"
 	"fmt"
 	"strings"
+
+	"github.com/illidaris/aphroditecli/internal/watermill"
 
 	"github.com/spf13/cobra"
 )

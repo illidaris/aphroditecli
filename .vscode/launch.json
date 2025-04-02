@@ -5,6 +5,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "db",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "db",
+        "--dbDsn",
+        "root:C8PU91;FFGxE1@Pqm++;@tcp(192.168.97.71:3306)/dev_qiuqiu_hercules",
+        "--dbDriver",
+        "mysql",
+        "--dbSql",
+        "select * from ugc_activity",
+        "--out",
+        "excel",
+        "--pretty",
+      ]
+    },
+    {
       "name": "mongo",
       "type": "go",
       "request": "launch",

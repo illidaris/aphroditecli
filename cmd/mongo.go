@@ -4,9 +4,10 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"aphroditecli/internal/mongo"
 	"context"
 	"time"
+
+	"github.com/illidaris/aphroditecli/internal/mongo"
 
 	"github.com/spf13/cobra"
 )

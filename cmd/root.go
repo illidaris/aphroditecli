@@ -4,8 +4,9 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"aphroditecli/pkg/log"
 	"os"
+
+	"github.com/illidaris/aphroditecli/pkg/log"
 
 	"github.com/illidaris/logger"
 	"github.com/spf13/cobra"
@@ -13,10 +14,11 @@ import (
 
 var delay int64
 var pretty bool
+var out string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "aphroditecli",
+	Use:   "github.com/illidaris/aphroditecli",
 	Short: "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
@@ -43,12 +45,14 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.aphroditecli.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.github.com/illidaris/aphroditecli.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	logger.OnlyConsole()
 	log.NewLogger()
+
+	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "console", "exporter out")
 	rootCmd.PersistentFlags().BoolVarP(&pretty, "pretty", "P", false, "pretty log")
 	rootCmd.PersistentFlags().Int64VarP(&delay, "delay", "D", 0, "exec delay")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")

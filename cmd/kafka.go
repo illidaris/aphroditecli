@@ -4,10 +4,11 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"aphroditecli/internal/kafka"
 	"context"
 	"fmt"
 	"strings"
+
+	"github.com/illidaris/aphroditecli/internal/kafka"
 
 	"github.com/illidaris/aphrodite/component/kafkaex"
 	"github.com/spf13/cobra"
@@ -28,7 +29,7 @@ to quickly create a Cobra application.`,
 		fmt.Println("kafka called")
 		opts := []kafkaex.OptionsFunc{
 			kafkaex.WithAddr(kafkaAddrs...),
-			kafkaex.WithApp("aphroditecli"),
+			kafkaex.WithApp("github.com/illidaris/aphroditecli"),
 			kafkaex.WithUser(kafkaUser),
 			kafkaex.WithPwd(kafkaPwd),
 		}

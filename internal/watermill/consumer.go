@@ -1,10 +1,11 @@
 package watermill
 
 import (
-	"aphroditecli/pkg/log"
 	"context"
 	"encoding/json"
 	"time"
+
+	"github.com/illidaris/aphroditecli/pkg/log"
 
 	"github.com/illidaris/watermillex/kafkaex"
 )
@@ -27,10 +28,10 @@ func Consumer(ctx context.Context, topics []string, brokers []string, user, pwd 
 	for _, topic := range topics {
 		err := m.RegisterSubscriber(context.Background(),
 			topic,
-			kafkaex.WithGroup("aphroditecli"), // 主消费组，不同组可以同时消费同一条消息，一条消息只能被一个组消费一次
+			kafkaex.WithGroup("github.com/illidaris/aphroditecli"), // 主消费组，不同组可以同时消费同一条消息，一条消息只能被一个组消费一次
 			kafkaex.WithTopic(topic),
 			kafkaex.WithHandle(Handle(delay)))
-		log.Info(context.TODO(), "aphroditecli_subscribe_%s,%v", topic, err)
+		log.Info(context.TODO(), "github.com/illidaris/aphroditecli_subscribe_%s,%v", topic, err)
 	}
 	return nil
 }

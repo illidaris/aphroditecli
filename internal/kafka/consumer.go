@@ -15,7 +15,7 @@ func Consumer(ctx context.Context, topics []string, opts ...kafkaex.OptionsFunc)
 	if err != nil {
 		return err
 	}
-	err = m.NewConsumer(uuid.NewString(), "aphroditecli", func(ctx context.Context, m *kafkaex.Message) (kafkaex.ReceiptStatus, error) {
+	err = m.NewConsumer(uuid.NewString(), "github.com/illidaris/aphroditecli", func(ctx context.Context, m *kafkaex.Message) (kafkaex.ReceiptStatus, error) {
 		msg := fmt.Sprintf("%s[消费:%s]：消费者(%s|%s),主题(%s_%d_%d),消息头(%s),%s=%s \n",
 			time.Now().Format("2006-01-02 15:04:05"),
 			time.Unix(m.Ts, 0).Format("2006-01-02 15:04:05"),

@@ -1,11 +1,12 @@
 package mongo
 
 import (
-	"aphroditecli/pkg/log"
 	"context"
 	"errors"
 	"sync/atomic"
 	"time"
+
+	"github.com/illidaris/aphroditecli/pkg/log"
 
 	"github.com/illidaris/aphrodite/component/mongoex"
 	"github.com/illidaris/aphrodite/pkg/dependency"
