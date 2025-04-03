@@ -14,7 +14,9 @@ import (
 
 var delay int64
 var pretty bool
+var reverse bool
 var out string
+var secret string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -52,8 +54,10 @@ func init() {
 	logger.OnlyConsole()
 	log.NewLogger()
 
+	rootCmd.PersistentFlags().StringVar(&secret, "secret", "", "secret")
 	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "console", "exporter out")
 	rootCmd.PersistentFlags().BoolVarP(&pretty, "pretty", "P", false, "pretty log")
+	rootCmd.PersistentFlags().BoolVarP(&reverse, "reverse", "R", false, "reverse func")
 	rootCmd.PersistentFlags().Int64VarP(&delay, "delay", "D", 0, "exec delay")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

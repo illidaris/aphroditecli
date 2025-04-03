@@ -12,6 +12,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	isTs bool
+)
+
 // timesCmd represents the times command
 var timesCmd = &cobra.Command{
 	Use:   "times",
@@ -23,17 +27,31 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		now := time.Now()
-		exptr.FmtTable([][]string{
-			{"Date", "Ts", "DateFmt"},
-			{convert.TimeFormat(now), cast.ToString(now.Unix()), cast.ToString(convert.TimeNumber(now))},
-		}, false)
+		ts := []time.Time{}
+		for _, v := range args {
+			if isTs {
+				ts = append(ts, time.Unix(cast.ToInt64(v), 0))
+			} else {
+				ts = append(ts, cast.ToTime(v))
+			}
+		}
+		if len(ts) == 0 {
+			ts = append(ts, time.Now())
+		}
+		rows := [][]string{
+			{"Date", "Ts", "DateFmt", "DateFmtCN"},
+		}
+		for _, v := range ts {
+			row := []string{convert.TimeFormat(v), cast.ToString(v.Unix()), cast.ToString(convert.TimeNumber(v)), v.Format("2006年01月02日 15:04:05")}
+			rows = append(rows, row)
+		}
+		exptr.FmtTable(rows, false)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(timesCmd)
-
+	timesCmd.PersistentFlags().BoolVar(&isTs, "isTs", false, "input args is timestamp")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
