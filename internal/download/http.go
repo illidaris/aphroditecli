@@ -11,6 +11,7 @@ import (
 
 	"github.com/illidaris/aphrodite/pkg/group"
 	fileex "github.com/illidaris/file/path"
+	"github.com/schollz/progressbar/v3"
 )
 
 func Download(out string, needdir bool, args ...string) {
@@ -26,8 +27,10 @@ func Download(out string, needdir bool, args ...string) {
 			}
 		}
 	}
+	bar := progressbar.Default(int64(len(urls)))
 	_, _ = group.GroupBaseFunc(func(vs ...string) (int64, error) {
 		for _, v := range vs {
+			defer bar.Add(1)
 			err := SaveAsFile(out, needdir)(v)
 			if err != nil {
 				fmt.Printf("%v 保存错误: %v\n", v, err)
