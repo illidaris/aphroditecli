@@ -76,6 +76,8 @@ github.com/illidaris/aphrodite v0.4.8 h1:r0hf5rNmQF0bkfsHJ+P6NPGNzKcVbH4xhv5U8+M
 github.com/illidaris/aphrodite v0.4.8/go.mod h1:VfmGa6MfRoO/mBcA1nYlbJD6c22uXXFsjrqEcZDtF90=
 github.com/illidaris/core v1.0.0 h1:7Emm3rNRjtMaJ4fO+2Vy83VGGivb8Fj2fJoIQfNhLD8=
 github.com/illidaris/core v1.0.0/go.mod h1:1bhQRpbhrkRmvFsxHGb4ruLkEyd20jMia8PxAvuqDtc=
+github.com/illidaris/file v0.0.0-20211214105415-1252d850b318 h1:3Q95aAttnC71sOASkwFeimsmn2VKzPU49JtYU78eqs4=
+github.com/illidaris/file v0.0.0-20211214105415-1252d850b318/go.mod h1:DjyPAc8Q8+ckgMYvAMpiW2dCTCwXFV+dHEM6UKpVBJ4=
 github.com/illidaris/logger v1.2.2 h1:nr1ULL/vcwwrlB28QGRfRHVYXy9Mu7pNrlCTKiWQe30=
 github.com/illidaris/logger v1.2.2/go.mod h1:sFEaJoXRARAaLPb2V4JhOOXiywIVaV/SyNFVcjD4KBo=
 github.com/illidaris/watermillex v0.0.6 h1:jqR9hmWScynYjx8HGWJ0J6YPniJdFMJBuRRrS2dD6qI=

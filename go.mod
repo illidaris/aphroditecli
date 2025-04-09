@@ -7,6 +7,7 @@ require (
 	github.com/google/uuid v1.3.1
 	github.com/illidaris/aphrodite v0.4.8
 	github.com/illidaris/core v1.0.0
+	github.com/illidaris/file v0.0.0-20211214105415-1252d850b318
 	github.com/illidaris/logger v1.2.2
 	github.com/illidaris/watermillex v0.0.6
 	github.com/lib/pq v1.10.9

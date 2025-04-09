@@ -1,0 +1,92 @@
+package download
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"os"
+	"path"
+	"strings"
+
+	"github.com/illidaris/aphrodite/pkg/group"
+	fileex "github.com/illidaris/file/path"
+)
+
+func Download(out string, needdir bool, args ...string) {
+	urls := []string{}
+	for _, v := range args {
+		raw := UrlsFrmFile(v)
+		if len(raw) == 0 {
+			continue
+		}
+		for _, url := range raw {
+			if url != "" {
+				urls = append(urls, url)
+			}
+		}
+	}
+	_, _ = group.GroupBaseFunc(func(vs ...string) (int64, error) {
+		for _, v := range vs {
+			err := SaveAsFile(out, needdir)(v)
+			if err != nil {
+				fmt.Printf("%v 保存错误: %v\n", v, err)
+			}
+		}
+		return 1, nil
+	}, 1, urls...)
+}
+
+func SaveAsFile(out string, needdir bool) func(urlstr string) error {
+	return func(urlstr string) error {
+		keys, name := parseKeys(urlstr)
+		fDirKeys := []string{out}
+		if needdir {
+			fDirKeys = append(fDirKeys, keys...)
+		}
+		fDirName := path.Join(fDirKeys...)
+		fileName := path.Join(fDirName, name)
+		_ = fileex.MkdirIfNotExist(fDirName)
+		resp, err := http.Get(urlstr)
+		if err != nil {
+			return err
+		}
+		defer resp.Body.Close()
+		f, err := os.Create(fileName)
+		if err != nil {
+			return err
+		}
+		_, err = io.Copy(f, resp.Body)
+		if err != nil {
+			return err
+		}
+		return nil
+	}
+}
+
+func parseKeys(urlstr string) ([]string, string) {
+	u, err := url.Parse(urlstr)
+	if err != nil {
+		return nil, ""
+	}
+	keys := strings.Split(u.Path, "/")
+	if len(keys) == 0 {
+		return keys, ""
+	}
+	return keys[:len(keys)-1], keys[len(keys)-1]
+}
+
+func UrlsFrmFile(file string) []string {
+	if strings.Contains(file, "http") {
+		return []string{file}
+	}
+	_, err := os.Stat(file)
+	if os.IsNotExist(err) {
+		return nil
+	}
+	bs, err := os.ReadFile(file)
+	if err != nil {
+		return nil
+	}
+	return strings.Split(string(bs), "\n")
+}
