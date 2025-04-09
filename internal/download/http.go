@@ -88,5 +88,7 @@ func UrlsFrmFile(file string) []string {
 	if err != nil {
 		return nil
 	}
-	return strings.Split(string(bs), "\n")
+	content := string(bs)
+	content = strings.ReplaceAll(content, "\r\n", "\n")
+	return strings.Split(content, "\n")
 }
