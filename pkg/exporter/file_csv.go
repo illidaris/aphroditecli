@@ -16,6 +16,7 @@ func FmtCsv(data any, pretty bool) {
 		return
 	}
 	b := &bytes.Buffer{}
+	b.WriteString("\xEF\xBB\xBF")
 	wr := csv.NewWriter(b)
 	for _, row := range rows {
 		_ = wr.Write(row)

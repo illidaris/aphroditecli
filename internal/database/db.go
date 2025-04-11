@@ -11,8 +11,8 @@ import (
 	"github.com/spf13/cast"
 )
 
-// DbExec 执行sql语句
-func DbExec(ctx context.Context, sqlstr string, args []any, opts ...Option) ([]map[string]any, error) {
+// DbQuery 执行sql语句
+func DbQuery(ctx context.Context, sqlstr string, args []any, opts ...Option) ([]map[string]any, error) {
 	argStrs := []string{}
 	for _, arg := range args {
 		argStrs = append(argStrs, cast.ToString(arg))
