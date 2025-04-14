@@ -38,7 +38,7 @@ func WriteQrCode(content string, quality qrcode.RecoveryLevel, size int, dest st
 	if err != nil {
 		return "", err
 	}
-	return base64.URLEncoding.EncodeToString(bs), nil
+	return base64.StdEncoding.EncodeToString(bs), nil
 }
 
 func ParseQrCodeExport(raws ...string) {
