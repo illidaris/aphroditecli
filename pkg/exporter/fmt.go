@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 
+	"github.com/illidaris/aphrodite/pkg/structure"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cast"
 )
@@ -25,6 +26,7 @@ func FmtTable(data any, pretty bool) {
 }
 
 func FmtJson(data any, pretty bool) {
+	data = RowToJson(data)
 	bs, err := json.Marshal(data)
 	if err != nil || len(bs) == 0 {
 		return
@@ -33,10 +35,51 @@ func FmtJson(data any, pretty bool) {
 	println(PrettyString(jsonStr, pretty))
 }
 
+func RowToJson(data any) any {
+	if newData, ok := data.([]*structure.KVs[string, any]); ok {
+		heads := []any{}
+		rows := [][]any{}
+		for index, kvs := range newData {
+			s := kvs.ToSlice()
+			if index == 0 {
+				for _, kv := range s {
+					heads = append(heads, kv.Key)
+				}
+				rows = append(rows, heads)
+			}
+			row := []any{}
+			for _, kv := range s {
+				row = append(row, kv.Value)
+			}
+			rows = append(rows, row)
+		}
+		return rows
+	}
+	return data
+}
+
 func ConvertToRows(data any) [][]string {
 	switch data := data.(type) {
 	case [][]string:
 		return data
+	case []*structure.KVs[string, any]:
+		heads := []string{}
+		rows := [][]string{}
+		for index, kvs := range data {
+			s := kvs.ToSlice()
+			if index == 0 {
+				for _, kv := range s {
+					heads = append(heads, kv.Key)
+				}
+				rows = append(rows, heads)
+			}
+			row := []string{}
+			for _, kv := range s {
+				row = append(row, cast.ToString(kv.Value))
+			}
+			rows = append(rows, row)
+		}
+		return rows
 	case []map[string]any:
 		heads := []string{}
 		rows := [][]string{}

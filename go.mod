@@ -5,7 +5,7 @@ go 1.21.9
 require (
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/uuid v1.3.1
-	github.com/illidaris/aphrodite v0.4.8
+	github.com/illidaris/aphrodite v0.4.10
 	github.com/illidaris/core v1.0.0
 	github.com/illidaris/file v0.0.0-20211214105415-1252d850b318
 	github.com/illidaris/logger v1.2.2

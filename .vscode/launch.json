@@ -52,7 +52,7 @@
         "--dbSql",
         "select * from ugc_activity",
         "--out",
-        "excel",
+        "csv",
         "--pretty",
       ]
     },
