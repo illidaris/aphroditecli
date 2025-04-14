@@ -80,7 +80,7 @@ func parseKeys(urlstr string) ([]string, string) {
 }
 
 func UrlsFrmFile(file string) []string {
-	if strings.Contains(file, "http") {
+	if _, err := url.Parse(file); err != nil {
 		return []string{file}
 	}
 	_, err := os.Stat(file)
