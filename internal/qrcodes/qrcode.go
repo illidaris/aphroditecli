@@ -2,6 +2,7 @@ package qrcodes
 
 import (
 	"bytes"
+	"encoding/base64"
 	"fmt"
 	"io"
 	"net/http"
@@ -14,23 +15,30 @@ import (
 	qrcodeReader "github.com/tuotoo/qrcode"
 )
 
-func WriteQrCodeExport(size int, dest string, contents ...string) {
+func WriteQrCodeExport(size int, out string, contents ...string) {
 	rows := [][]string{
 		{"Content", "Path", "Data", "Error"},
 	}
 	for index, content := range contents {
-		destFull := path.Join(dest, fmt.Sprintf("%d.png", index+1))
-		bs, err := WriteQrCode(content, qrcode.Medium, size, destFull)
-		rows = append(rows, []string{content, destFull, string(bs), fmt.Sprintf("%v", err)})
+		var destFull string
+		if out != "" {
+			destFull = path.Join(out, fmt.Sprintf("%d.png", index+1))
+		}
+		res, err := WriteQrCode(content, qrcode.Medium, size, destFull)
+		rows = append(rows, []string{content, destFull, res, fmt.Sprintf("%v", err)})
 	}
 	exporter.FmtTable(rows, false)
 }
 
-func WriteQrCode(content string, quality qrcode.RecoveryLevel, size int, dest string) ([]byte, error) {
+func WriteQrCode(content string, quality qrcode.RecoveryLevel, size int, dest string) (string, error) {
 	if dest != "" {
-		return nil, WriteQrCodeToFile(content, qrcode.Medium, size, dest)
+		return "", WriteQrCodeToFile(content, qrcode.Medium, size, dest)
 	}
-	return qrcode.Encode(content, quality, size)
+	bs, err := qrcode.Encode(content, quality, size)
+	if err != nil {
+		return "", err
+	}
+	return base64.URLEncoding.EncodeToString(bs), nil
 }
 
 func ParseQrCodeExport(raws ...string) {
@@ -45,6 +53,9 @@ func ParseQrCodeExport(raws ...string) {
 }
 func ParseQrCode(raw string) (string, error) {
 	if _, err := url.Parse(raw); err != nil {
+		if res, bs64Err := ReadQRCodeByBase64(raw); bs64Err == nil {
+			return res, nil
+		}
 		return ReadQRCodeByDisk(raw)
 	}
 	return ReadQRCodeByUrl(raw)
@@ -57,6 +68,17 @@ func ReadQRCodeByUrl(fileurl string) (string, error) {
 	}
 	defer resp.Body.Close()
 	return ReadQRCodeByReader(resp.Body)
+}
+
+func ReadQRCodeByBase64(bs64 string) (string, error) {
+	bs, err := base64.URLEncoding.DecodeString(bs64)
+	if err != nil {
+		bs, err = base64.StdEncoding.DecodeString(bs64)
+		if err != nil {
+			return "", err
+		}
+	}
+	return ReadQRCodeByReader(bytes.NewReader(bs))
 }
 
 func ReadQRCodeByDisk(filename string) (string, error) {

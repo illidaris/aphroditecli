@@ -24,7 +24,7 @@ to quickly create a Cobra application.`,
 		if reverse {
 			qrcodes.ParseQrCodeExport(args...)
 		} else {
-			qrcodes.WriteQrCodeExport(256, ",/", args...)
+			qrcodes.WriteQrCodeExport(256, out, args...)
 		}
 	},
 }
