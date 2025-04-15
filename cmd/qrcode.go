@@ -8,6 +8,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	logo  string
+	logoP int
+)
+
 // qrcodeCmd represents the qrcode command
 var qrcodeCmd = &cobra.Command{
 	Use:   "qrcode",
@@ -24,14 +29,16 @@ to quickly create a Cobra application.`,
 		if reverse {
 			qrcodes.ParseQrCodeExport(args...)
 		} else {
-			qrcodes.WriteQrCodeExport(256, out, args...)
+			qrcodes.WriteQrCodeExport(size, logoP, logo, out, args...)
 		}
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(qrcodeCmd)
-
+	qrcodeCmd.PersistentFlags().IntVar(&size, "size", 256, "qrcode size")
+	qrcodeCmd.PersistentFlags().StringVar(&logo, "logo", "", "qrcode with logo")
+	qrcodeCmd.PersistentFlags().IntVar(&logoP, "logoP", 5, "qrcode proportion [0,10]")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
