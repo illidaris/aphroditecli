@@ -16,7 +16,12 @@ func WriteQrCodeExport(size, logoP int, logo, out string, contents ...string) {
 	rows := [][]string{
 		{"Content", "Path", "Data", "Error"},
 	}
-	logoBs, _ := os.ReadFile(logo)
+	var (
+		logoBs []byte
+	)
+	if logo != "" {
+		logoBs, _ = apqrcodes.ReadFile(logo)
+	}
 	for index, content := range contents {
 		var destFull string
 		if out != "" {
@@ -33,7 +38,7 @@ func WriteQrCode(content string, quality qrcode.RecoveryLevel, size, logoP int, 
 	if dest == "" {
 		return qrcode.Encode(content, quality, size)
 	}
-	if logo == nil || len(logo) == 0 || logoP == 0 {
+	if len(logo) == 0 || logoP == 0 {
 		return nil, qrcode.WriteFile(content, qrcode.Medium, size, dest)
 	}
 	// 未指定路径时，生成PNG格式字节数组
