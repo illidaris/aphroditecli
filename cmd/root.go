@@ -56,7 +56,7 @@ func init() {
 	log.NewLogger()
 
 	rootCmd.PersistentFlags().StringVar(&secret, "secret", "", "secret")
-	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "console", "exporter out")
+	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "", "exporter out")
 	rootCmd.PersistentFlags().BoolVarP(&pretty, "pretty", "P", false, "pretty log")
 	rootCmd.PersistentFlags().BoolVarP(&reverse, "reverse", "R", false, "reverse func")
 	rootCmd.PersistentFlags().Int64VarP(&delay, "delay", "D", 0, "exec delay")

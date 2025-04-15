@@ -5,6 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "qrcode",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "qrcode",
+        "--logoP",
+        "5",
+        "--logo",
+        "https://www.spaceparty.cn/_nuxt/img/logo.74f652d.png",
+        "https://github.com/samber/do",
+      ]
+    },
+    {
       "name": "dbexec",
       "type": "go",
       "request": "launch",
