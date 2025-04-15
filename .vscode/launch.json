@@ -5,6 +5,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "qrcode disk",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "qrcode",
+        "--logoP",
+        "5",
+        "--logo",
+        "https://www.spaceparty.cn/_nuxt/img/logo.74f652d.png",
+        "--out",
+        "./",
+        "--zoom",
+        "9",
+        "https://github.com/samber/do",
+      ]
+    },
+    {
       "name": "qrcode",
       "type": "go",
       "request": "launch",
