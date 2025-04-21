@@ -5,6 +5,35 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "encrypter de",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "encrypter",
+        "-R",
+        "--secret",
+        "xxxxabcdxxxxabcd",
+        "d/V+4ueGEsLsHvXzSnV39yQlz+z65R2sP7tJeyABBjCqojX4qAtgXfaaxsc=",
+        "v/VW1LbiA41o6plI5/MoKVG5n2Q/Y+Y0cZ5buMK7ge0atHxNhNCF6cmQY9k=",
+      ]
+    },
+    {
+      "name": "encrypter",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "encrypter",
+        "--secret",
+        "xxxxabcdxxxxabcd",
+        "https://github.com/samber/do",
+        "https://github.com/samber/do",
+      ]
+    },
+    {
       "name": "qrcode disk",
       "type": "go",
       "request": "launch",
@@ -56,7 +85,7 @@
         "insert into activity(`id`) values(20)"
       ]
     },
-       {
+    {
       "name": "sign",
       "type": "go",
       "request": "launch",
@@ -106,7 +135,7 @@
         "100000"
       ]
     },
-     {
+    {
       "name": "json",
       "type": "go",
       "request": "launch",
