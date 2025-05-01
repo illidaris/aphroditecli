@@ -68,6 +68,19 @@
       ]
     },
     {
+      "name": "qrcode parse",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "qrcode",
+        "-R",
+        "https://image.preternatural.cc/pn/4-0_1746084678_361497.jpg",
+        "https://image.preternatural.cc/pn/4-0_1746085154_354538.jpg",
+      ]
+    },
+    {
       "name": "dbexec",
       "type": "go",
       "request": "launch",

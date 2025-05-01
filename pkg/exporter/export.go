@@ -1,13 +1,13 @@
 package exporter
 
-func Export(exptr string, data any, pretty bool) {
+func Export(exptr, name string, data any, pretty bool) {
 	switch exptr {
 	case "json":
 		FmtJson(data, pretty)
 	case "csv":
-		FmtCsv(data, pretty)
+		FmtCsv(name, data, pretty)
 	case "excel":
-		FmtExcel(data, pretty)
+		FmtExcel(name, data, pretty)
 	default:
 		FmtTable(data, pretty)
 	}

@@ -8,9 +8,10 @@ import (
 	"time"
 
 	"github.com/illidaris/aphrodite/pkg/convert"
+	"github.com/spf13/cast"
 )
 
-func FmtCsv(data any, pretty bool) {
+func FmtCsv(name string, data any, pretty bool) {
 	rows := ConvertToRows(data)
 	if len(rows) == 0 {
 		return
@@ -22,5 +23,8 @@ func FmtCsv(data any, pretty bool) {
 		_ = wr.Write(row)
 	}
 	wr.Flush()
-	_ = os.WriteFile(fmt.Sprintf("%v.csv", convert.TimeNumber(time.Now())), b.Bytes(), os.ModePerm)
+	if name == "" {
+		name = cast.ToString(convert.TimeNumber(time.Now()))
+	}
+	_ = os.WriteFile(fmt.Sprintf("%v.csv", name), b.Bytes(), os.ModePerm)
 }

@@ -28,6 +28,10 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if dbSql == "" {
+			println("db sql is required")
+			return
+		}
 		data, err := database.DbQuery(context.Background(),
 			dbSql, nil,
 			database.WithDriver(dbDriver),
@@ -36,7 +40,7 @@ to quickly create a Cobra application.`,
 		if err != nil {
 			println(err.Error())
 		}
-		exptr.Export(out, data, pretty)
+		exptr.Export("", out, data, pretty)
 	},
 }
 
