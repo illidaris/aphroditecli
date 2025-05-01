@@ -7,7 +7,6 @@ import (
 	"context"
 
 	"github.com/illidaris/aphroditecli/internal/database"
-	exptr "github.com/illidaris/aphroditecli/pkg/exporter"
 	"github.com/spf13/cobra"
 )
 
@@ -28,19 +27,14 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if dbSql == "" {
-			println("db sql is required")
-			return
-		}
-		data, err := database.DbQuery(context.Background(),
-			dbSql, nil,
+		err := database.DbQueryExport(context.Background(),
+			args, out, pretty,
 			database.WithDriver(dbDriver),
 			database.WithDSN(dbDsn),
 		)
 		if err != nil {
 			println(err.Error())
 		}
-		exptr.Export("", out, data, pretty)
 	},
 }
 
