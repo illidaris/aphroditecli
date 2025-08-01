@@ -80,8 +80,8 @@ github.com/hashicorp/go-multierror v1.1.1/go.mod h1:iw975J/qwKPdAO1clOe2L8331t/9
 github.com/hashicorp/go-uuid v1.0.2/go.mod h1:6SBZvOh/SIDV7/2o3Jml5SYk/TvGqwFJ/bN7x4byOro=
 github.com/hashicorp/go-uuid v1.0.3 h1:2gKiV6YVmrJ1i2CKKa9obLvRieoRGviZFL26PcT/Co8=
 github.com/hashicorp/go-uuid v1.0.3/go.mod h1:6SBZvOh/SIDV7/2o3Jml5SYk/TvGqwFJ/bN7x4byOro=
-github.com/illidaris/aphrodite v0.4.13 h1:Ry9jFpFhfzrfc2mIByqLDdPe5ilBVPfgmQWWceETraI=
-github.com/illidaris/aphrodite v0.4.13/go.mod h1:cjawy/E0QnG9mtW8VOvf20TvqfxYV+zhyF8x4lmGdmI=
+github.com/illidaris/aphrodite v0.4.46 h1:rq5bhR8ggiot9tAbD8S4JDgUzfKbWL9K6It2DaXZHlc=
+github.com/illidaris/aphrodite v0.4.46/go.mod h1:YOOu8fB1qimmwU8M91BUXpmn+iEfctHi1mKSEeNpF9Q=
 github.com/illidaris/core v1.0.0 h1:7Emm3rNRjtMaJ4fO+2Vy83VGGivb8Fj2fJoIQfNhLD8=
 github.com/illidaris/core v1.0.0/go.mod h1:1bhQRpbhrkRmvFsxHGb4ruLkEyd20jMia8PxAvuqDtc=
 github.com/illidaris/file v0.0.0-20211214105415-1252d850b318 h1:3Q95aAttnC71sOASkwFeimsmn2VKzPU49JtYU78eqs4=
@@ -212,8 +212,8 @@ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
-github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
-github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
+github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
+github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/trinodb/trino-go-client v0.314.0 h1:IOXren3Qhk8gmYkOHQ/gjCui/++UZvpNdjkJd1QGIjA=
 github.com/trinodb/trino-go-client v0.314.0/go.mod h1:YpZf2WAClFhU+n0ZhdkmMbugYaMRM/mjywiQru0wpeQ=
 github.com/tuotoo/qrcode v0.0.0-20220425170535-52ccc2bebf5d h1:4x1FeGJRB00cvxnKXnRJDT89fvG/Lzm2ecm0vlr/qDs=

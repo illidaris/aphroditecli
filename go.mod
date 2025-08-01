@@ -3,9 +3,10 @@ module github.com/illidaris/aphroditecli
 go 1.21.9
 
 require (
+	github.com/go-echarts/go-echarts/v2 v2.6.0
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/uuid v1.3.1
-	github.com/illidaris/aphrodite v0.4.13
+	github.com/illidaris/aphrodite v0.4.46
 	github.com/illidaris/core v1.0.0
 	github.com/illidaris/file v0.0.0-20211214105415-1252d850b318
 	github.com/illidaris/logger v1.2.2
@@ -31,7 +32,6 @@ require (
 	github.com/eapache/go-resiliency v1.6.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230731223053-c322873962e3 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
-	github.com/go-echarts/go-echarts/v2 v2.6.0 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
