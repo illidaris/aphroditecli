@@ -8,7 +8,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/illidaris/aphrodite/pkg/group"
 	"github.com/illidaris/aphrodite/pkg/structure"
 	"github.com/illidaris/aphroditecli/pkg/exporter"
@@ -31,8 +30,7 @@ func DbQueryExport(ctx context.Context, sqls []string, out string, pretty bool, 
 			if err != nil {
 				println(err.Error())
 			}
-			// TODO: 导出文件名称
-			exporter.Export(uuid.NewString(), out, data, pretty)
+			exporter.ExportX(out, data, pretty)
 		}
 		return 1, nil
 	}, 1, sqls...)
