@@ -43,7 +43,7 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 		for _, txt := range txts {
 			entries = append(entries, &hOllamaBase.Entry{
 				Id:      atomic.AddInt64(&id, 1),
-				Code:    cast.ToString(index),
+				Code:    v,
 				Content: txt,
 			})
 		}
@@ -62,7 +62,13 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 	for _, v := range entries {
 		dst = append(dst, v)
 	}
-	rows, header, err := table2struct.Struct2Table(dst)
+	rows, header, err := table2struct.Struct2Table(dst, table2struct.WithAllowTagFields(
+		"id",
+		"code",
+		"content",
+		"result",
+		"duration",
+	))
 	if err != nil {
 		return err
 	}
