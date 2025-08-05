@@ -3,6 +3,7 @@ package ollama
 import (
 	"context"
 	"fmt"
+	"sync/atomic"
 
 	"github.com/illidaris/aphrodite/pkg/convert/table2struct"
 	hOllamaBase "github.com/illidaris/aphrodite/pkg/ollama/biz/base"
@@ -23,12 +24,13 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 	if err != nil {
 		return err
 	}
+	var id int64 = 0
 	entries := []*hOllamaBase.Entry{}
 	for index, v := range args {
 		b, err := fileex.ExistOrNot(v)
 		if err != nil || !b {
 			entries = append(entries, &hOllamaBase.Entry{
-				Id:      int64(index),
+				Id:      atomic.AddInt64(&id, 1),
 				Code:    cast.ToString(index),
 				Content: v,
 			})
@@ -40,8 +42,8 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 		}
 		for _, txt := range txts {
 			entries = append(entries, &hOllamaBase.Entry{
-				Id:      int64(index),
-				Code:    v,
+				Id:      atomic.AddInt64(&id, 1),
+				Code:    cast.ToString(index),
 				Content: txt,
 			})
 		}
@@ -50,7 +52,7 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 		hOllamaBase.WithModel(model),
 		hOllamaBase.WithThink(false),
 		hOllamaBase.WithHandle(func(ctx context.Context, e *hOllamaBase.Entry) error {
-			fmt.Printf("[%v]结果(%.2fs )：%v %v \n", e.Id, e.Duration.Seconds(), e.Result, e.Content)
+			fmt.Printf("[%v]结果(%vms )：%v %v \n", e.Id, e.Duration, e.Result, e.Content)
 			return nil
 		}))(context.Background(), categories, labels, entries...)
 	if err != nil {
