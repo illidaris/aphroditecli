@@ -62,7 +62,7 @@ func Classic(ctx context.Context, host, model, template, labelFile, categoryFile
 	for _, v := range entries {
 		dst = append(dst, v)
 	}
-	rows, header, err := table2struct.Struct2Table(dst, table2struct.WithAllowTagFields(
+	header, rows, err := table2struct.Struct2Table(dst, table2struct.WithAllowTagFields(
 		"id",
 		"code",
 		"content",
