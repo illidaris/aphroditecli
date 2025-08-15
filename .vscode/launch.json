@@ -5,6 +5,26 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "redismq-client",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "redismqclient",
+      ]
+    },
+        {
+      "name": "redismq-server",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "redismqserver",
+      ]
+    },
+    {
       "name": "ollama",
       "type": "go",
       "request": "launch",
