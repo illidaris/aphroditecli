@@ -11,13 +11,13 @@ import (
 // urlencodeCmd represents the urlencode command
 var urlencodeCmd = &cobra.Command{
 	Use:   "urlencode",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A urlencode tool",
+	Long: `A urlencode tool. For example:
+编码：
+./aphroditecli urlencode "{RAW1}" "{RAW2}"
+解码：
+./aphroditecli urlencode -R "{EN1}" "{EN2}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if reverse {
 			encrypts.UrlDecode(args...)

@@ -17,13 +17,11 @@ var (
 // dbexecCmd represents the dbexec command
 var dbexecCmd = &cobra.Command{
 	Use:   "dbexec",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A dbexec tool",
+	Long: `A dbexec tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli dbexec --dbDsn '{USER}:{PWD}@tcp({IP}:3306)/{DB}' --trans 2 --delay 1800 "update..." "insert..."
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		database.DbExec(dbDsn, trans, time.Duration(delay)*time.Second, args...)
 	},

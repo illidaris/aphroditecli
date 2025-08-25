@@ -19,13 +19,11 @@ var (
 // dbCmd represents the db command
 var dbCmd = &cobra.Command{
 	Use:   "db",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A db query tool",
+	Long: `A db query tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli db --dbDsn '{USER}:{PWD}@tcp({IP}:3306)/{DB}' --dbDriver mysql --dbSql "select * from ..." --out excel --pretty
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		err := database.DbQueryExport(context.Background(),
 			args, out, pretty,

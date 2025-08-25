@@ -19,13 +19,12 @@ var (
 // timesCmd represents the times command
 var timesCmd = &cobra.Command{
 	Use:   "times",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A unix tool",
+	Long: `A unix tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli times --isTs "{TS1}" "{TS2}"
+./aphroditecli times "{DATE1}" "{DATE2}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		ts := []time.Time{}
 		for _, v := range args {

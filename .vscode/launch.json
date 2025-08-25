@@ -37,10 +37,10 @@
         "--ollamaHost",
         "http://192.168.20.40:11434",
         "--ollamaLabelFile",
-        "/home/joseph/Documents/label.xlsx",
+        "tmp/label.xlsx",
         "--ollamaCategoryFile",
-        "/home/joseph/Documents/category.xlsx",
-        "/home/joseph/Documents/raws.xlsx",
+        "tmp/category.xlsx",
+        "tmp/raws.xlsx",
       ]
     },
     {

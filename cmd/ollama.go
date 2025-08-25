@@ -22,13 +22,11 @@ var (
 // ollamaCmd represents the ollama command
 var ollamaCmd = &cobra.Command{
 	Use:   "ollama",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A ollama tool",
+	Long: `A ollama tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli.exe ollama --ollamaAction classic --ollamaHost "{OLLAMA_HOST}" --ollamaLabelFile "{LABEL_PATH}" --ollamaCategoryFile "{CATEGORY_PATH}" --out excel "{RAW_PATH}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		switch ollamaAction {
 		case "classic":

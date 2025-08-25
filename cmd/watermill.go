@@ -26,13 +26,15 @@ var (
 // watermillCmd represents the watermill command
 var watermillCmd = &cobra.Command{
 	Use:   "watermill",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "a watermill mq tool",
+	Long: `a watermill mq tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+wm_consumer:
+./aphroditecli watermill -A192.168.97.71:10192 -A192.168.97.71:10292 -A192.168.97.71:10392 -Ukafka -PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx -Ttestdelaytopic -Mconsumer -D0
+
+wm_producer:
+./aphroditecli watermill -A192.168.97.71:10192 -A192.168.97.71:10292 -A192.168.97.71:10392 -Ukafka -PpUuQNY9zG3NvObZxDwBhiHSBD6UxsQVx -Ttestdelaytopic -Mproducer -Kabcd -Vmessageaaaaaaaaaaaaaaaaaaaaaaaaaaa
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("watermill called")
 		fmt.Println(strings.Join(kafkaAddrs, ","))

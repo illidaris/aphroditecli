@@ -11,13 +11,15 @@ import (
 // encrypterCmd represents the encrypter command
 var encrypterCmd = &cobra.Command{
 	Use:   "encrypter",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A encrypter tool",
+	Long: `A encrypter tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+加密：
+./aphroditecli encrypter --secret "{SECRET}" "{RAW1}" "{RAW2}" "{RAW3}"
+
+解密：
+./aphroditecli encrypter -R --secret "{SECRET}" "{ENCRYPT1}" "{ENCRYPT2}" "{ENCRYPT3}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if reverse {
 			encrypts.Decrypt(secret, args...)

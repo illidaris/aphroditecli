@@ -17,15 +17,18 @@ var (
 // qrcodeCmd represents the qrcode command
 var qrcodeCmd = &cobra.Command{
 	Use:   "qrcode",
-	Short: "A brief description of your command, default is encode generate a qrcode png file, -R decode read a qrcode png file",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A qrcode tool",
+	Long: `A qrcode tool. For example:
 
 default is encode generate a qrcode png file, -R decode read a qrcode png file
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+qrcode link generate to qrcode image:
+./aphroditecli qrcode --logoP 5 --logo "{LOGO_ICON}" "{QRCODE_DATA}"
+./aphroditecli qrcode --logoP 5 --logo "{LOGO_ICON}" --out ./ --zoom 9 "{QRCODE_DATA}"
+
+qrcode image parse to qrcode data:
+./aphroditecli qrcode -R "{LINK}" "{IMAGE_PATH}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if reverse {
 			qrcodes.ParseQrCodeExport(args...)

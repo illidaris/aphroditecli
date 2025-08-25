@@ -11,13 +11,11 @@ import (
 // signCmd represents the sign command
 var signCmd = &cobra.Command{
 	Use:   "sign",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A sign tool",
+	Long: `A sign tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli sign --secret "{SECRET}" "{RAW1}" "{RAW2}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		encrypts.Sign(secret, args...)
 	},

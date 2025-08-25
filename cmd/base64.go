@@ -11,13 +11,14 @@ import (
 // base64Cmd represents the base64 command
 var base64Cmd = &cobra.Command{
 	Use:   "base64",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A base64 tool",
+	Long: `A base64 tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+编码：
+./aphroditecli base64 "{RAW1}" "{RAW2}"
+解码：
+./aphroditecli base64 -R "{EN1}" "{EN2}"
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if reverse {
 			encrypts.Base64Decode(args...)

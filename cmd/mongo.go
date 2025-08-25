@@ -21,13 +21,12 @@ var (
 // mongoCmd represents the mongo command
 var mongoCmd = &cobra.Command{
 	Use:   "mongo",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "A mongo tool",
+	Long: `A mongo tool. For example:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+./aphroditecli mongo --mongoconn "mongodb://{USER}:{PWD}@{IP}:27018/{DB}?authSource=admin" --mongodb "{DB}" --concurrence 10
+}
+	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		//	mongo.ExecWithTrans(context.Background(), mongodb, mongoconn, concurrence)
 		mongo.Exec(context.Background(), mongodb, mongoconn, concurrence)
