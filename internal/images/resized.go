@@ -15,6 +15,7 @@ import (
 func Resize(src, target string, width uint, height uint) error {
 	if target == "" {
 		target = path.Join(src, "thb")
+		_ = os.Mkdir(target, os.ModePerm)
 	}
 	return filepath.WalkDir(src, func(ph string, d fs.DirEntry, err error) error {
 		if err != nil {
