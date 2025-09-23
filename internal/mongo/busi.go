@@ -3,6 +3,7 @@ package mongo
 import (
 	"context"
 	"errors"
+	"fmt"
 	"sync/atomic"
 	"time"
 
@@ -12,7 +13,67 @@ import (
 	"github.com/illidaris/aphrodite/pkg/dependency"
 	"github.com/illidaris/aphrodite/pkg/group"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
+
+type Demo struct {
+}
+
+func (d *Demo) ID() any {
+	return ""
+}
+func (d *Demo) TableName() string {
+	return "trade_product"
+}
+func (d *Demo) Database() string {
+	return ""
+}
+func (d *Demo) ToRow() []string {
+	return nil
+}
+func (d *Demo) ToJson() string {
+	return ""
+}
+func (d *Demo) DbSharding(keys ...any) string {
+	return "5078"
+}
+func (d *Demo) GetRawIndexes() []mongo.IndexModel {
+	return []mongo.IndexModel{
+		{
+			Keys: bson.D{
+				{Key: "userId", Value: 1},
+			},
+		},
+		{
+			Keys: bson.D{
+				{Key: "seasonRankStr", Value: "text"},
+				{Key: "name", Value: "text"},
+			},
+		},
+	}
+}
+
+func IndexSync(ctx context.Context, dbname, conn string, concurrence int) error {
+	mongoex.NewMongo("5078", dbname, conn)
+	c := mongoex.GetNamedMongoClient("5078")
+
+	mongoex.SyncDbStruct([][]any{{"5078"}}, &Demo{})
+	// c.Database(dbname).Collection("trade_product").Indexes().DropOne(ctx, "userId_1_seasonRankStr_text_name_text")
+	// c.Database(dbname).Collection("trade_product").Indexes().DropOne(ctx, "userId_1")
+	cursor, err := c.Database(dbname).Collection("trade_product").Indexes().List(ctx)
+	if err != nil {
+		return err
+	}
+	var indexes []interface{}
+	if err = cursor.All(ctx, &indexes); err != nil {
+		return err
+	}
+	fmt.Println("Found indexes:")
+	for _, idx := range indexes {
+		fmt.Printf("  - %+v\n", idx)
+	}
+	return nil
+}
 
 func Exec(ctx context.Context, dbname, conn string, concurrence int) error {
 	mongoex.NewMongo("5078", dbname, conn)

@@ -200,9 +200,9 @@
       "args": [
         "mongo",
         "--mongoconn",
-        "mongodb://mongouser:nygB4hCpXLGuBLAEipXp@192.168.97.71:27018/dev_qiuqiu_hercules?authSource=admin&maxPoolSize=100&minPoolSize=20&maxConnecting=4&timeoutMS=60000&maxIdleTimeMS=1000",
+        "mongodb://mongouser:nygB4hCpXLGuBLAEipXp@192.168.97.71:27018/dev_pntl_hercules?authSource=admin&maxPoolSize=100&minPoolSize=20&maxConnecting=4&timeoutMS=60000&maxIdleTimeMS=1000",
         "--mongodb",
-        "dev_qiuqiu_hercules",
+        "dev_pntl_hercules",
         "--concurrence",
         "100000"
       ]

@@ -29,7 +29,7 @@ var mongoCmd = &cobra.Command{
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		//	mongo.ExecWithTrans(context.Background(), mongodb, mongoconn, concurrence)
-		mongo.Exec(context.Background(), mongodb, mongoconn, concurrence)
+		mongo.IndexSync(context.Background(), mongodb, mongoconn, concurrence)
 		<-time.After(time.Hour * 1)
 	},
 }
